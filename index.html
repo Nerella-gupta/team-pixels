@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAKRITICURE</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #8400ff;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #0056b3;
+        }
+
+        .slider img {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .slider img:hover {
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            color: #fff;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .chat-input-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .chat-input {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .send-btn {
+            padding: 10px;
+            border-radius: 6px;
+            background-image: linear-gradient(to right, #007bff, #0056b3);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-position 0.3s;
+        }
+
+        .send-btn:hover {
+            background-position: right center;
+        }
+
+        .about-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .footer {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="logo">PRAKRITICURE</h1>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="signin.html" class="nav-link">Sign In</a></li>
+                <li><a href="signup.html" class="nav-link">Sign Up</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide" data-type="medical">
+                    <img src="medical.jpg" alt="Medical">
+                    <div class="slide-content">
+                        <h3>Medical Treatment</h3>
+                        <p>Get AI-powered medical treatment recommendations.</p>
+                    </div>
+                </div>
+                <div class="slide" data-type="ayurvedic">
+                    <img src="ayurvedic.jpg" alt="Ayurvedic">
+                    <div class="slide-content">
+                        <h3>Ayurvedic Treatment</h3>
+                        <p>Explore traditional Ayurvedic remedies.</p>
+                    </div>
+                </div>
+                <div class="slide" data-type="homeopathy">
+                    <img src="homeopathy.jpg" alt="Homeopathy">
+                    <div class="slide-content">
+                        <h3>Homeopathy Treatment</h3>
+                        <p>Discover homeopathic solutions for your health.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-btn prev" onclick="prevSlide()">&#10094;</button>
+            <button class="slider-btn next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section id="chatbot" class="chatbot-section">
+        <h2 class="section-title">Ask Your Medical Questions</h2>
+        <div class="chat-box" id="chatBox">
+            <p class="bot-msg">👨‍⚕️ AI Bot: Hello! How can I assist you today?</p>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="userInput" class="chat-input" placeholder="Type your symptoms or questions..." />
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <h2 class="section-title">About us </h2>
+            <p class="about-text">
+                We are a team of healthcare and AI experts dedicated to providing personalized medical solutions using cutting-edge technology.
+                Our platform leverages artificial intelligence to deliver accurate and reliable medical advice. By integrating traditional and modern
+                medical practices, we offer a comprehensive approach to health care. Our mission is to empower individuals with the knowledge and 
+                tools they need to make informed decisions about their health. Whether it's exploring the benefits of Ayurvedic treatments or 
+                understanding homeopathic solutions, we provide a wide range of options tailored to your needs.
+            </p>
+            <p class="about-text">
+                Part of our vision includes Paritikikicure, a unique blend of modern science and traditional wisdom, offering holistic health solutions
+                that cater to the mind, body, and spirit. Our team continuously explores innovative ways to integrate technology with traditional 
+                medical practices to enhance overall well-being.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2023 Medical AI Chatbot. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
